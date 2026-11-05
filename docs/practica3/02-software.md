@@ -50,7 +50,7 @@ Un archivo de texto UTF-8 con una cadena por línea.
 - Una cadena con un símbolo que no es del alfabeto aparece como `ERROR` en el informe; no detiene la validación de las demás.
 - El informe se guarda en `salidas/<nombre>.txt` e incluye: autómata, origen de las cadenas, fecha, una línea por cadena (número, cadena, resultado y explicación) y el total de aceptadas, rechazadas y con error.
 
-Ejemplo de archivo para el ejercicio 263 (termina en 01):
+Ejemplo de archivo para el ejercicio 263 (termina en 01), guardado como [automatas/practica3/casos-de-prueba/cadenas_263.txt](../../automatas/practica3/casos-de-prueba/cadenas_263.txt):
 
 ```
 01
@@ -84,12 +84,14 @@ Las capturas van en [evidencias/practica3/](../../evidencias/practica3/). Falta 
 
 | Archivo sugerido | Qué mostrar |
 |---|---|
-| `evidencias/practica3/clausuras_196.png` | Ejercicio 196 cargado; *Conversiones* → «λ-clausuras» y la clausura del estado A |
+| `evidencias/practica3/clausuras_196.png` | Ejercicio 196 cargado; *Conversiones* → «λ-clausuras» (clausura de cada estado) |
+| `evidencias/practica3/clausura_estado_196.png` | Clausura de un estado elegido por el usuario (A) |
 | `evidencias/practica3/simulacion_196.png` | *Simulación* con 001 en un paso intermedio (se ven «antes» y «después» de la clausura) |
 | `evidencias/practica3/quitar_lambda_196.png` | «Quitar transiciones λ» con las transiciones añadidas |
 | `evidencias/practica3/subconjuntos_196.png` | «Convertir a AFD» con la tabla completa y las razones de aceptación |
 | `evidencias/practica3/minimizacion_156.png` | «Minimizar AFD» con las dos particiones |
-| `evidencias/practica3/equivalencia_156_157.png` | Comparación de dos AFD (equivalentes y no equivalentes) |
-| `evidencias/practica3/lote_263.png` | Pestaña *Varias cadenas* con el resultado |
+| `evidencias/practica3/equivalencia_156_157.png` | Comparación de dos AFD no equivalentes (156 y 157) |
+| `evidencias/practica3/equivalencia_156_minimo.png` | Comparación de un AFD con su propio mínimo (equivalentes) |
+| `evidencias/practica3/lote_263.png` | Pestaña *Varias cadenas*: archivo cargado, resultados e informe guardado |
 | `evidencias/practica3/pytest_py311.txt`, `pytest_py312.txt`, `pytest_py313.txt` | Salida de `pytest -q` en cada contenedor |
 | `evidencias/practica3/ci_verde.png` | Pestaña *Actions* de GitHub con las tres versiones en verde |

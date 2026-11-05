@@ -37,20 +37,24 @@ Procedimiento en JFLAP 7.1 (Anexo 1 del enunciado), igual para los cinco:
 | B (lazo `1`, entrada A→B `1`, salida B→A `0`, B→fin `λ`) | A→A: `0+11*0`; A→fin: `11*`; inicio→A: `λ` |
 | A (lazo `0+11*0`) | inicio→fin: `(0+11*0)*11*` |
 
-Con el orden A, B se obtiene `0*1(1+00*1)*`, también equivalente. **[COMPLETAR JFLAP]**: orden de eliminación, expresión y captura de cada paso.
+Con el orden A, B se obtiene `0*1(1+00*1)*`, también equivalente.
 
-**Verificación** (autómata contra expresión; **[COMPLETAR JFLAP]** la columna de JFLAP):
+**Resultado de JFLAP 7.1** (*Convert FA to RE*): `(0*11*0)*0*11*`. No coincide letra por letra con la de este documento, pero es equivalente: se comparó con el autómata y con `(0+11*0)*11*` sobre todas las cadenas de longitud 0 a 12 y no hubo ninguna discrepancia. Los tres describen «cadenas que terminan en 1». JFLAP elige su propio orden de eliminación, que puede diferir del de este documento.
+
+**Verificación** (autómata contra expresión y contra JFLAP, con *Input → Multiple Run* sobre el AFD):
 
 | Cadena | Autómata | Expresión | JFLAP (Multiple Run) |
 |---|---|---|---|
-| λ | rechaza | rechaza | |
-| 1 | acepta | acepta | |
-| 01 | acepta | acepta | |
-| 110 | rechaza | rechaza | |
-| 0101 | acepta | acepta | |
-| 10 | rechaza | rechaza | |
+| λ | rechaza | rechaza | Reject |
+| 1 | acepta | acepta | Accept |
+| 01 | acepta | acepta | Accept |
+| 110 | rechaza | rechaza | Reject |
+| 0101 | acepta | acepta | Accept |
+| 10 | rechaza | rechaza | Reject |
 
-`Convert to NFA` + `Compare Equivalence`: **[COMPLETAR JFLAP]** (captura del resultado de la comparación).
+Captura: `evidencias/practica3/jflap_254_multiplerun.png`.
+
+`Convert to NFA` + `Compare Equivalence`: se escribió `(0*11*0)*0*11*` en una expresión regular de JFLAP, se convirtió a NFA (autómata de 28 estados con transiciones λ, construcción de Thompson) y se comparó con el AFD original. JFLAP respondió «They ARE equivalent!». Captura: `evidencias/practica3/jflap_254_equivalencia.png`.
 
 **Simplificación.** Leyes de Hopcroft, Motwani y Ullman (2007), sección 3.4 (leyes algebraicas de las expresiones regulares):
 
