@@ -651,7 +651,7 @@ class Automata:
         finales = [q for q in miembros if q in self._aceptacion]
         if finales:
             return (f"{formatear_conjunto(miembros)} es de aceptación porque contiene "
-                    f"{', '.join(finales)}, que es de aceptación en el original.")
+                    f"{', '.join(finales)}, que {'es' if len(finales) == 1 else 'son'} de aceptación en el original.")
         return f"{formatear_conjunto(miembros)} no es de aceptación: ninguno de sus estados lo es en el original."
 
     # ------------------------- simplificación -------------------------
