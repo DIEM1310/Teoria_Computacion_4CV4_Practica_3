@@ -316,3 +316,25 @@ def test_una_cadena_con_simbolo_ajeno_levanta_error_en_el_nucleo_pero_no_en_el_l
     with pytest.raises(SimboloFueraDelAlfabeto):
         a.simular("2")
     assert K.validar_lote(a, ["2"])[0][1] == "ERROR"
+
+
+# ---------------------------------------------------------------------------
+# Archivos entregados en automatas/practica3/
+# ---------------------------------------------------------------------------
+
+import formatos as F  # noqa: E402
+from pathlib import Path  # noqa: E402
+
+CARPETA_P3 = Path(__file__).resolve().parent.parent / "automatas" / "practica3"
+
+
+def test_los_casos_de_prueba_entregados_son_los_de_la_practica():
+    nombres = sorted(p.stem for p in (CARPETA_P3 / "casos-de-prueba").glob("*.jff"))
+    assert nombres == sorted(CASOS)
+
+
+@pytest.mark.parametrize("ruta", sorted((CARPETA_P3 / "casos-de-prueba").glob("*.jff"))
+                         + sorted((CARPETA_P3 / "afd-a-er").glob("*.jff")), ids=lambda p: p.stem)
+def test_cada_jff_de_la_practica_3_reconoce_el_mismo_lenguaje_que_el_del_registro(ruta):
+    del_archivo = F.leer_archivo(ruta, alfabeto=E.POR_NOMBRE[ruta.stem].fabrica().alfabeto)
+    assert lenguajes_iguales(del_archivo, E.POR_NOMBRE[ruta.stem].fabrica())
