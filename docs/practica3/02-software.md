@@ -76,7 +76,7 @@ docker compose run --rm py312 pytest -q
 docker compose run --rm py313 pytest -q
 ```
 
-El ejercicio 191 de la Lista 3 no está en el registro de ejercicios del repositorio (`src/ejercicios.py`), por lo que no aparece como caso de prueba.
+El ejercicio 191 de la Lista 3 no tiene autómata propio: es el enunciado común de los ejercicios 192 a 195 («encuentre un AFD equivalente y calcule δ̂ y δ̂_D»), cuyas tablas están en cada uno de ellos. Por eso no está en el registro de ejercicios (`src/ejercicios.py`). Del intervalo 191 a 194 que pide el apartado 2.3, los autómatas son los de los ejercicios 192, 193 y 194, que sí son casos de prueba.
 
 ## Capturas
 
