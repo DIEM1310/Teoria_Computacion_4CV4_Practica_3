@@ -451,4 +451,4 @@ Las pruebas comparan el autómata original, el AFN sin λ, el AFD de subconjunto
 
 ## Referencias
 
-Hopcroft, J. E., Motwani, R. y Ullman, J. D. (2007). *Teoría de autómatas, lenguajes y computación* (3.ª ed.). Pearson Educación. Secciones citadas: 2.3.5 y teorema 2.11 (subconjuntos), 2.5.3 a 2.5.5 y teorema 2.22 (λ-clausura y eliminación de λ), 4.4.1 a 4.4.3 (equivalencia y minimización) y 3.2.1 y 3.2.2 (de AFD a expresión regular, para el Ejercicio 1). Ficha completa en [bibliografía](../bibliografia.md).
+Hopcroft, J. E., Motwani, R. y Ullman, J. D. (2007). *Introducción a la teoría de autómatas, lenguajes y computación* (3.ª ed.). Pearson Addison-Wesley. Secciones citadas: 2.3.5 y teorema 2.11 (subconjuntos), 2.5.3 a 2.5.5 y teorema 2.22 (λ-clausura y eliminación de λ), 4.4.1 a 4.4.3 (equivalencia y minimización) y 3.2.1 y 3.2.2 (de AFD a expresión regular, para el Ejercicio 1). Ficha completa en [bibliografía](../bibliografia.md).

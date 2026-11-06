@@ -312,7 +312,7 @@ Hopcroft, Motwani y Ullman presentan el lenguaje de las cadenas sobre {{0, 1}} c
 
 ## Referencias
 
-Hopcroft, J. E., Motwani, R. y Ullman, J. D. (2007). *Teoría de autómatas, lenguajes y computación* (3.ª ed.). Pearson Educación. ISBN: 978-84-7829-088-8.
+Hopcroft, J. E., Motwani, R. y Ullman, J. D. (2007). *Introducción a la teoría de autómatas, lenguajes y computación* (3.ª ed.). Pearson Addison-Wesley. ISBN: 978-84-7829-088-8.
 
 Rodger, S. H. y Finley, T. W. (2006). *JFLAP: An interactive formal languages and automata package*. Jones & Bartlett.
 """
