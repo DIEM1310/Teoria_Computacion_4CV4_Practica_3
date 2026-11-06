@@ -30,6 +30,8 @@ GitHub, Inc. (s. f.-a). *Pull requests*. GitHub Docs. Recuperado el 21 de septie
 
 GitHub, Inc. (s. f.-b). *Workflow syntax for GitHub Actions*. GitHub Docs. Recuperado el 4 de noviembre de 2026, de https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
 
+JFLAP. (s. f.). *JFLAP* (Versión 7.1) [Software]. Recuperado el 5 de noviembre de 2026, de https://www.jflap.org
+
 ## Normas, especificaciones y actas
 
 No se cita ninguna norma.
