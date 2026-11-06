@@ -92,7 +92,7 @@ print(comparar_por_minimo(afd, minimo).equivalentes)  # equivalencia por AFD mí
 | `automatas/` | Autómatas en `.jff`, `.json` y `.xml` |
 | `docs/practica3/` | Documentos de la práctica, en Markdown |
 | `evidencias/practica3/` | Capturas y salidas de pytest |
-| `herramientas/` | Scripts de la Práctica 2 que generan y verifican los autómatas |
+| `herramientas/` | Scripts de la Práctica 2 que generan y verifican los autómatas, y `jflap_practica3.js`, que repite con las clases de JFLAP 7.1 el Ejercicio 1.1 (expresión, NFA, equivalencia y *Multiple Run*) |
 
 ## Formatos de archivo y convención para λ
 

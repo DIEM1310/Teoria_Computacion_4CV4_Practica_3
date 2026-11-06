@@ -2,7 +2,9 @@
 
 Se eligieron cinco AFD de la Lista 3, los ejercicios **254 a 258**, cuyos archivos están en [automatas/practica3/afd-a-er/](../../automatas/practica3/afd-a-er/). Son los AFD de la Lista 3 de los que el enunciado pide la expresión regular, y tienen entre 2 y 3 estados, lo que permite revisar a mano cada paso.
 
-**Cómo leer este documento.** Cada apartado tiene lo que ya está calculado y verificado con el software del repositorio (la expresión, la traza de eliminación de estados y la prueba de 6 cadenas en autómata y expresión), y los campos marcados **[COMPLETAR JFLAP]**, que solo pueden llenarse al ejecutar JFLAP 7.1: la expresión que entrega `Convert FA to RE`, el resultado de `Convert to NFA` y de `Compare Equivalence`, y las capturas. JFLAP elige su propio orden de eliminación, así que su expresión puede ser distinta de la de este documento aunque sea equivalente; lo que debe anotarse es el orden de JFLAP y compararlo con el de aquí.
+**Cómo leer este documento.** Cada apartado tiene lo que ya está calculado y verificado con el software del repositorio (la expresión, la traza de eliminación de estados y la prueba de 6 cadenas en autómata y expresión), y lo que entrega JFLAP 7.1: la expresión de `Convert FA to RE`, el resultado de `Convert to NFA` con `Compare Equivalence` y la prueba de las cadenas con `Multiple Run`. JFLAP elige su propio orden de eliminación, así que su expresión puede ser distinta de la de este documento aunque sea equivalente; en cada ejercicio se indica si coinciden.
+
+**Cómo se obtuvieron los resultados de JFLAP.** El ejercicio 254 se hizo en la interfaz de JFLAP 7.1 (con capturas). Los ejercicios 255 a 258 se obtuvieron ejecutando las mismas clases de `JFLAP7.1.jar` desde la línea de comandos, sin abrir la ventana: `FSAToRegularExpressionConverter` (*Convert FA to RE*), la conversión de expresión a NFA (*Convert to NFA*), `FSAEqualityChecker` (*Compare Equivalence*) y el simulador de entradas (*Multiple Run*). El script está en [herramientas/jflap_practica3.js](../../herramientas/jflap_practica3.js) y se ejecuta con `jjs -cp JFLAP7.1.jar herramientas/jflap_practica3.js` desde la raíz del repositorio. El 254 se hizo por las dos vías y coinciden en todo: la expresión `(0*11*0)*0*11*`, el NFA de 28 estados, la equivalencia y las seis respuestas de *Multiple Run*. Para los otros cuatro no hay capturas de JFLAP; el orden en que la interfaz elimina los estados puede variar si se eligen a mano, y con él la forma de la expresión.
 
 La verificación con el software usa `expresiones.desde_automata` y `expresiones.acepta` ([src/expresiones.py](../../src/expresiones.py)): la expresión de cada autómata se probó con **todas** las cadenas de longitud hasta 9 sobre su alfabeto.
 
@@ -77,20 +79,20 @@ El resultado confirma el pronóstico del análisis previo: las cadenas que termi
 | B (lazo `1`, A→B `0+1`, B→A `0`) | A→A: `(0+1)1*0`; A→fin: `λ`; inicio→A: `λ` |
 | A (lazo `(0+1)1*0`) | inicio→fin: `((0+1)1*0)*` |
 
-**[COMPLETAR JFLAP]**: expresión de JFLAP, orden y capturas.
+**Resultado de JFLAP 7.1** (*Convert FA to RE*): `((0+1)1*0)*`, la misma expresión de este documento. Como A es inicial y de aceptación, JFLAP primero crea un estado final nuevo («Make Single Noninitial Final State»).
 
 **Verificación:**
 
-| Cadena | Autómata | Expresión | JFLAP |
+| Cadena | Autómata | Expresión | JFLAP (Multiple Run) |
 |---|---|---|---|
-| λ | acepta | acepta | |
-| 1 | rechaza | rechaza | |
-| 01 | rechaza | rechaza | |
-| 110 | acepta | acepta | |
-| 0101 | rechaza | rechaza | |
-| 10 | acepta | acepta | |
+| λ | acepta | acepta | Accept |
+| 1 | rechaza | rechaza | Reject |
+| 01 | rechaza | rechaza | Reject |
+| 110 | acepta | acepta | Accept |
+| 0101 | rechaza | rechaza | Reject |
+| 10 | acepta | acepta | Accept |
 
-`Convert to NFA` + `Compare Equivalence`: **[COMPLETAR JFLAP]**.
+`Convert to NFA` + `Compare Equivalence`: la expresión de JFLAP `((0+1)1*0)*` se convirtió a un NFA de 16 estados y el comprobador de equivalencia de JFLAP (el de *Compare Equivalence*) lo da **equivalente** al AFD original.
 
 **Simplificación.** No se simplifica: el bloque `(0+1)1*0` no tiene factor común ni alternativas repetidas. Se intentó `λ+(0+1)(0+1)*0`, pero no es equivalente (acepta 000, que el autómata rechaza).
 
@@ -105,20 +107,19 @@ El resultado confirma el pronóstico del análisis previo: las cadenas que termi
 | A (lazo `1+2`, inicio→A `λ`, A→B `0`, B→A `2`) | inicio→B: `(1+2)*0`; B→B: `0+1+2(1+2)*0`; B→fin: `λ` |
 | B (lazo `0+1+2(1+2)*0`) | inicio→fin: `(1+2)*0(0+1+2(1+2)*0)*` |
 
-**[COMPLETAR JFLAP]**: expresión de JFLAP, orden y capturas.
-
+**Resultado de JFLAP 7.1** (*Convert FA to RE*): `((1+2)*0(0+1)*2)*(1+2)*0(0+1)*` (30 símbolos). Es distinta de la de este documento (22 símbolos) pero equivalente: se comparó con el autómata y con `(1+2)*0(0+1+2(1+2)*0)*` sobre todas las cadenas de longitud 0 a 10 sin ninguna discrepancia.
 **Verificación:**
 
-| Cadena | Autómata | Expresión | JFLAP |
+| Cadena | Autómata | Expresión | JFLAP (Multiple Run) |
 |---|---|---|---|
-| λ | rechaza | rechaza | |
-| 1 | rechaza | rechaza | |
-| 01 | acepta | acepta | |
-| 110 | acepta | acepta | |
-| 0101 | acepta | acepta | |
-| 2 | rechaza | rechaza | |
+| λ | rechaza | rechaza | Reject |
+| 1 | rechaza | rechaza | Reject |
+| 01 | acepta | acepta | Accept |
+| 110 | acepta | acepta | Accept |
+| 0101 | acepta | acepta | Accept |
+| 2 | rechaza | rechaza | Reject |
 
-`Convert to NFA` + `Compare Equivalence`: **[COMPLETAR JFLAP]**.
+`Convert to NFA` + `Compare Equivalence`: la expresión de JFLAP `((1+2)*0(0+1)*2)*(1+2)*0(0+1)*` se convirtió a un NFA de 44 estados y el comprobador de equivalencia de JFLAP (el de *Compare Equivalence*) lo da **equivalente** al AFD original.
 
 **Simplificación.** No se simplifica: los dos factores `(1+2)*0` y `(0+1+2(1+2)*0)*` no comparten términos, y distribuir alargaría la expresión.
 
@@ -134,20 +135,20 @@ El resultado confirma el pronóstico del análisis previo: las cadenas que termi
 | C (sin lazo; entra A→C, sale C→A y C→fin) | A→A: `(1+01*0)(0+1)`; A→fin: `01*+1+01*0`; inicio→A: `λ` |
 | A (lazo `(1+01*0)(0+1)`) | inicio→fin: `((1+01*0)(0+1))*(01*+1+01*0)` |
 
-**[COMPLETAR JFLAP]**: expresión de JFLAP, orden y capturas.
+**Resultado de JFLAP 7.1** (*Convert FA to RE*): `((1+01*0)(0+1))*(01*+1+01*0)`, la misma expresión de este documento. Como hay dos estados de aceptación (B y C), JFLAP primero crea un estado final nuevo.
 
 **Verificación:**
 
-| Cadena | Autómata | Expresión | JFLAP |
+| Cadena | Autómata | Expresión | JFLAP (Multiple Run) |
 |---|---|---|---|
-| λ | rechaza | rechaza | |
-| 1 | acepta | acepta | |
-| 01 | acepta | acepta | |
-| 110 | acepta | acepta | |
-| 0101 | rechaza | rechaza | |
-| 10 | rechaza | rechaza | |
+| λ | rechaza | rechaza | Reject |
+| 1 | acepta | acepta | Accept |
+| 01 | acepta | acepta | Accept |
+| 110 | acepta | acepta | Accept |
+| 0101 | rechaza | rechaza | Reject |
+| 10 | rechaza | rechaza | Reject |
 
-`Convert to NFA` + `Compare Equivalence`: **[COMPLETAR JFLAP]**.
+`Convert to NFA` + `Compare Equivalence`: la expresión de JFLAP `((1+01*0)(0+1))*(01*+1+01*0)` se convirtió a un NFA de 48 estados y el comprobador de equivalencia de JFLAP (el de *Compare Equivalence*) lo da **equivalente** al AFD original.
 
 **Simplificación.** Leyes de Hopcroft et al. (2007), sección 3.4:
 
@@ -170,20 +171,20 @@ La expresión resultante `((1+01*0)(0+1))*(01*(λ+0)+1)` tiene la misma longitud
 | A (entra inicio y C, sale A→C) | C→C: `01+(1+00)(0+1)`; C→fin: `λ`; inicio→C: `0+1` |
 | C (lazo `01+(1+00)(0+1)`) | inicio→fin: `(0+1)(01+(1+00)(0+1))*` |
 
-**[COMPLETAR JFLAP]**: expresión de JFLAP, orden y capturas.
+**Resultado de JFLAP 7.1** (*Convert FA to RE*): `((0+1)(01)*(1+00))*(0+1)(01)*` (29 símbolos). Es distinta de la de este documento (22 símbolos) pero equivalente: se comparó con el autómata y con `(0+1)(01+(1+00)(0+1))*` sobre todas las cadenas de longitud 0 a 10 sin ninguna discrepancia.
 
 **Verificación:**
 
-| Cadena | Autómata | Expresión | JFLAP |
+| Cadena | Autómata | Expresión | JFLAP (Multiple Run) |
 |---|---|---|---|
-| λ | rechaza | rechaza | |
-| 1 | acepta | acepta | |
-| 01 | rechaza | rechaza | |
-| 110 | acepta | acepta | |
-| 0101 | rechaza | rechaza | |
-| 10 | rechaza | rechaza | |
+| λ | rechaza | rechaza | Reject |
+| 1 | acepta | acepta | Accept |
+| 01 | rechaza | rechaza | Reject |
+| 110 | acepta | acepta | Accept |
+| 0101 | rechaza | rechaza | Reject |
+| 10 | rechaza | rechaza | Reject |
 
-`Convert to NFA` + `Compare Equivalence`: **[COMPLETAR JFLAP]**.
+`Convert to NFA` + `Compare Equivalence`: la expresión de JFLAP `((0+1)(01)*(1+00))*(0+1)(01)*` se convirtió a un NFA de 44 estados y el comprobador de equivalencia de JFLAP (el de *Compare Equivalence*) lo da **equivalente** al AFD original.
 
 **Simplificación.** No se simplifica: aplicar la ley distributiva al lazo da `01+10+11+000+001`, que es más larga y no se reduce más.
 
