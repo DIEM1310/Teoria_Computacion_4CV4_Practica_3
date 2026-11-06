@@ -198,7 +198,9 @@ Se obtuvo a mano la expresión de los autómatas **254** y **255** por tres mét
 |---|---|
 | Eliminación de estados | Hopcroft, Motwani y Ullman (2007), sección 3.2.2 (eliminación de estados en el autómata generalizado) |
 | Expresiones R_ij^(k) | Hopcroft et al. (2007), sección 3.2.1 y teorema 3.4 |
-| Sistema de ecuaciones y lema de Arden | Apunte del curso. El libro de Hopcroft et al. (2007) no desarrolla este método con ese nombre. **[COMPLETAR: título y fecha del apunte]** |
+| Sistema de ecuaciones y lema de Arden | Apunte del curso: Hurtado Avilés (s. f.), *Conversión de AFD a ER con el Lema de Arden* (semestre 2027/1), que sigue a De Castro Korgi (2004), secciones 2.10 a 2.12. El libro de Hopcroft et al. (2007) no desarrolla este método con ese nombre. |
+
+**Leyes que se citan en los métodos 2 y 3** (numeración del apunte, que toma las leyes de Hopcroft et al. (2007), sección 3.4): R1 `R+∅ = R`; R2 `R∅ = ∅R = ∅`; R3 `Rλ = λR = R`; R4 `RT+ST = (R+S)T` (factor común por la derecha); R5 `(RS)T = R(ST)`; R6 `λ+RR* = R*`. Además se usan la ley distributiva por la izquierda, `R(S+T) = RS+RT`, y la conmutatividad de la unión, `R+S = S+R`.
 
 ### Autómata 254 (A inicial, B de aceptación; A–0→A, A–1→B, B–0→A, B–1→B)
 
@@ -224,9 +226,9 @@ X_A = 0 X_A + 1 X_B
 X_B = 0 X_A + 1 X_B + λ        (B es de aceptación)
 ```
 
-De la segunda, X_B = 1 X_B + (0 X_A + λ), y por Arden X_B = 1*(0 X_A + λ) = 1*0 X_A + 1*. Se sustituye en la primera:
+De la segunda, X_B = 1 X_B + (0 X_A + λ), y por Arden X_B = 1*(0 X_A + λ) = 1*0 X_A + 1* (distributiva y R3). Se sustituye en la primera:
 
-X_A = 0 X_A + 1(1*0 X_A + 1*) = (0 + 11*0) X_A + 11*
+X_A = 0 X_A + 1(1*0 X_A + 1*) = 0 X_A + 11*0 X_A + 11* (distributiva y R5) = (0 + 11*0) X_A + 11* (R4)
 
 y por Arden X_A = **`(0+11*0)*11*`**, que es la expresión del lenguaje (A es inicial). Pasos: 2 ecuaciones, 2 aplicaciones del lema y 1 sustitución.
 
@@ -250,7 +252,7 @@ X_A = 0 X_B + 1 X_B + λ        (A es de aceptación)
 X_B = 0 X_A + 1 X_B
 ```
 
-De la segunda, X_B = 1*0 X_A. Se sustituye: X_A = (0+1)1*0 X_A + λ, y por Arden X_A = **`((0+1)1*0)*`**. Pasos: 2 ecuaciones, 1 aplicación del lema en cada ecuación y 1 sustitución.
+De la segunda, X_B = 1 X_B + 0 X_A, y por Arden X_B = 1*0 X_A. Se sustituye: X_A = 0 X_B + 1 X_B + λ = (0+1) X_B + λ (R4) = (0+1)1*0 X_A + λ (R5), y por Arden X_A = ((0+1)1*0)*λ = **`((0+1)1*0)*`** (R3). Pasos: 2 ecuaciones, 1 aplicación del lema en cada ecuación y 1 sustitución.
 
 ### Comparación
 
@@ -269,6 +271,6 @@ De la segunda, X_B = 1*0 X_A. Se sustituye: X_A = (0+1)1*0 X_A + λ, y por Arden
 
 ## Referencias
 
-Hopcroft, J. E., Motwani, R. y Ullman, J. D. (2007). *Teoría de autómatas, lenguajes y computación* (3.ª ed.). Pearson Educación. Secciones 3.2.1, 3.2.2 y 3.4. Ficha completa en [bibliografía](../bibliografia.md).
+Hopcroft, J. E., Motwani, R. y Ullman, J. D. (2007). *Introducción a la teoría de autómatas, lenguajes y computación* (3.ª ed.). Pearson Addison-Wesley. Secciones 3.2.1, 3.2.2 y 3.4. Ficha completa en [bibliografía](../bibliografia.md).
 
 Rodger, S. H. y Finley, T. W. (2006). *JFLAP: An interactive formal languages and automata package*. Jones & Bartlett.

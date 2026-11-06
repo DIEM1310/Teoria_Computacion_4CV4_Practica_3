@@ -2,7 +2,9 @@
 
 ## Libros
 
-Hopcroft, J. E., Motwani, R. y Ullman, J. D. (2007). *Teoría de autómatas, lenguajes y computación* (3.ª ed.). Pearson Educación. ISBN: 978-84-7829-088-8.
+De Castro Korgi, R. (2004). *Teoría de la computación: lenguajes, autómatas, gramáticas*. Universidad Nacional de Colombia, Unibiblos.
+
+Hopcroft, J. E., Motwani, R. y Ullman, J. D. (2007). *Introducción a la teoría de autómatas, lenguajes y computación* (3.ª ed.). Pearson Addison-Wesley. ISBN: 978-84-7829-088-8.
 
 Rodger, S. H. y Finley, T. W. (2006). *JFLAP: An interactive formal languages and automata package*. Jones & Bartlett. ISBN: 978-0-7637-3834-1.
 
@@ -31,6 +33,10 @@ GitHub, Inc. (s. f.-a). *Pull requests*. GitHub Docs. Recuperado el 21 de septie
 GitHub, Inc. (s. f.-b). *Workflow syntax for GitHub Actions*. GitHub Docs. Recuperado el 4 de noviembre de 2026, de https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
 
 JFLAP. (s. f.). *JFLAP* (Versión 7.1) [Software]. Recuperado el 5 de noviembre de 2026, de https://www.jflap.org
+
+## Material del curso
+
+Hurtado Avilés, G. (s. f.). *Conversión de AFD a ER con el Lema de Arden: explicado paso a paso, con tres ejemplos* [Apunte de clase, semestre 2027/1]. Teoría de la Computación, Escuela Superior de Cómputo, Instituto Politécnico Nacional.
 
 ## Normas, especificaciones y actas
 
